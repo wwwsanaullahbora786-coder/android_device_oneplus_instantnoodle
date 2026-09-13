@@ -1,6 +1,4 @@
-#!/system/bin/sh
 # automatically set device props for unified tree shared-hardware models/variants
-
 
 load_op8()
 {
@@ -24,7 +22,7 @@ load_op8()
     resetprop "ro.product.vendor.name" "OnePlus8"
     resetprop "ro.product.system.brand" "OnePlus"
     resetprop "ro.product.system.manufacturer" "OnePlus"
-    resetprop "ro.product.system.model" "IN2025"
+    resetprop "ro.product.system.model" "IN2015"
     resetprop "ro.product.system.name" "OnePlus8"
 }
 
@@ -41,15 +39,16 @@ load_op8t()
     resetprop "ro.product.product.device" "OnePlus8T"
     resetprop "ro.product.product.model" "OnePlus 8T"
     resetprop "ro.product.product.name" "OnePlus8T"
-    resetprop "ro.product.system.device" "OnePlus8T"
-    resetprop "ro.product.system.model" "OnePlus 8T"
-    resetprop "ro.product.system.name" "OnePlus8T"
     resetprop "ro.product.system_ext.device" "OnePlus8T"
     resetprop "ro.product.system_ext.model" "OnePlus 8T"
     resetprop "ro.product.system_ext.name" "OnePlus8T"
     resetprop "ro.product.vendor.device" "OnePlus8T"
     resetprop "ro.product.vendor.model" "OnePlus 8T"
     resetprop "ro.product.vendor.name" "OnePlus8T"
+    resetprop "ro.product.system.brand" "OnePlus"
+    resetprop "ro.product.system.manufacturer" "OnePlus"
+    resetprop "ro.product.system.model" "KB2003"
+    resetprop "ro.product.system.name" "OnePlus8T"
 }
 
 load_op8pro()
@@ -92,32 +91,42 @@ load_op9r()
     resetprop "ro.product.product.model" "OnePlus 9R"
     resetprop "ro.product.product.name" "OnePlus9R_IND"
     resetprop "ro.product.system.device" "OnePlus9R"
-    resetprop "ro.product.system.model" "OnePlus 9R"
-    resetprop "ro.product.system.name" "OnePlus9R_IND"
     resetprop "ro.product.system_ext.device" "OnePlus9R"
     resetprop "ro.product.system_ext.model" "OnePlus 9R"
     resetprop "ro.product.system_ext.name" "OnePlus9R_IND"
     resetprop "ro.product.vendor.device" "OnePlus9R"
     resetprop "ro.product.vendor.model" "OnePlus 9R"
     resetprop "ro.product.vendor.name" "OnePlus9R_IND"
+    resetprop "ro.product.system.brand" "OnePlus"
+    resetprop "ro.product.system.manufacturer" "OnePlus"
+    resetprop "ro.product.system.model" "LE2101"
+    resetprop "ro.product.system.name" "OnePlus9R"
 }
 
 project=$(getprop ro.boot.prj_version)
-echo "Running unified/variant script with $project..." >> /tmp/recovery.log
+project11=$(getprop ro.boot.project_name)
+echo "Running unified/variant script with $project / $project11..." >> /tmp/recovery.log
 
 case $project in
-    20828)
-        load_op9r
-        ;;
-	19821)
-	    load_op8
-		;;
-	19811)
-        load_op8pro
-        ;;		
-    *)
-        load_op8t
-        ;;
+    20828) load_op9r ;;
+    20838) load_op9r ;;
+    19821) load_op8 ;;
+    19855) load_op8 ;;
+    19867) load_op8 ;;
+    19811) load_op8pro ;;
+    19805) load_op8t ;;
+    20809) load_op8t ;;
+esac
+
+case $project11 in
+    20828) load_op9r ;;
+    20838) load_op9r ;;
+    19821) load_op8 ;;
+    19855) load_op8 ;;
+    19867) load_op8 ;;
+    19811) load_op8pro ;;
+    19805) load_op8t ;;
+    20809) load_op8t ;;
 esac
 
 exit 0

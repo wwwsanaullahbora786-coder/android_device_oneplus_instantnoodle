@@ -3,7 +3,7 @@
 Standalone TWRP/OrangeFox-buildable recovery device tree for OnePlus 8 /
 OnePlus 8 Pro (kona, `instantnoodle`/`instantnoodlep`). This branch is
 independent of `lineage-23.2` — it targets a minimal TWRP/OrangeFox
-manifest, not the full ROM manifest, so it does not depend on
+manifest, not the full ROM manifest, so it does not depend on.
 `device/oneplus/sm8250-common`.
 
 ## Provenance
